@@ -22,24 +22,23 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="bg-gradient-hero text-primary-foreground py-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="relative max-w-7xl mx-auto text-center">
-          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in">
+      <section className="bg-gradient-hero text-primary-foreground py-16 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 leading-tight">
             Premium Quality Meat
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed opacity-90 animate-slide-up">
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed opacity-90">
             From our farms to your table. Experience the finest selection of fresh, premium meat 
             sourced directly from trusted farms across Karnataka.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-lg mx-auto animate-bounce-in">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-lg mx-auto">
             <div className="relative flex-1 w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="Search for products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 bg-background/95 backdrop-blur-sm border-0 transition-all duration-300 focus:ring-2 focus:ring-primary/20"
+                className="pl-10 bg-background/95 backdrop-blur-sm border-0"
               />
             </div>
           </div>
@@ -80,10 +79,8 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredProducts.map((product, index) => (
-                <div key={product.id} style={{animationDelay: `${index * 0.1}s`}}>
-                  <ProductCard product={product} />
-                </div>
+              {filteredProducts.map(product => (
+                <ProductCard key={product.id} product={product} />
               ))}
             </div>
           ) : (
